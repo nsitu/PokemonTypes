@@ -1,0 +1,269 @@
+html {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+body {
+  font-family: 'TwentiethCenturyMedium', sans-serif;
+}
+
+h1 {
+  font-family: 'Pokemon Solid', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.25rem;
+  margin: 0;
+  line-height: 3rem;
+  text-align: left;
+}
+
+h2 {
+
+  font-size: 2rem;
+  padding: 0px;
+  margin: 0px 0px 1rem;
+  font-family: 'Pokemon Solid', sans-serif;
+  line-height: 3rem;
+  letter-spacing: 0.25rem;
+}
+
+h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  margin-top: 0px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+
+button {
+  padding: 10px 18px;
+  background: #EEE;
+  border: none;
+  border-radius: 0.5rem;
+  background-image: linear-gradient(to bottom, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.2));
+  color: #222;
+  font-size: 16px;
+  text-shadow: 0 1px white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #8CF;
+  text-shadow: 0 1px hsla(0, 0%, 100%, 0.5);
+  color: #222;
+}
+
+
+section {
+  display: none;
+}
+
+section.active {
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+
+/* ---- .listing ---- */
+
+.listing {
+  background: #ef5350;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 10px 18px;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.listing img {
+  width: 75px;
+}
+
+.listing .profile img {
+  align-self: center;
+  width: 300px;
+  max-width: 50vw;
+}
+
+[popover] {
+  padding: 2rem 2rem 3rem;
+  border-radius: 1rem;
+  border: none;
+  filter: drop-shadow(0 0 2rem rgba(0, 0, 0, 0.3));
+}
+
+[popover]::backdrop {
+  backdrop-filter: blur(3px);
+}
+
+
+[popover] .profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 75vw;
+}
+
+fieldset {
+  border: none;
+}
+
+footer {
+  padding: 2rem;
+}
+
+header img {
+  width: 80px;
+  padding: 1.2rem 0.8rem 0;
+}
+
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button.close {
+  align-self: end;
+}
+
+@media (min-width: 768px) {
+  .details {
+    flex-direction: row;
+  }
+}
+
+
+.stats {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.stat {
+  width: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.base-stat {
+  width: 3rem;
+  height: 3rem;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 3rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+
+}
+
+.stat-name {
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+
+/*Colours Via https://bulbapedia.bulbagarden.net/wiki/Type */
+.normal .listing {
+  background: #A8A878
+}
+
+.fire .listing {
+  background: #F08030
+}
+
+.fighting .listing {
+  background: #C03028
+}
+
+.water .listing {
+  background: #6890F0
+}
+
+.flying .listing {
+  background: #a890f0
+}
+
+.grass .listing {
+  background: #78c850
+}
+
+.poison .listing {
+  background: #a040a0
+}
+
+.electric .listing {
+  background: #f8d030
+}
+
+.ground .listing {
+  background: #e0c068
+}
+
+.psychic .listing {
+  background: #f85888
+}
+
+.rock .listing {
+  background: #b8a038
+}
+
+.ice .listing {
+  background: #98d8d8
+}
+
+.bug .listing {
+  background: #a8b820
+}
+
+.dragon .listing {
+  background: #7038f8
+}
+
+.ghost .listing {
+  background: #705898
+}
+
+.dark .listing {
+  background: #705848
+}
+
+.steel .listing {
+  background: #b8b8d0
+}
+
+.fairy .listing {
+  background: #ee99ac
+}
