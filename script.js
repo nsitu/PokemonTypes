@@ -130,16 +130,12 @@ const createProfile = async (url) => {
 
   </div> 
   <div class="stats">
-      ${pokemon.stats.map(stat => `
-        <div class="stat">
-          <div class="base-stat">${stat.base_stat}</div>
-          <div class="stat-name">${stat.stat.name}</div> 
-        </div>
-      `).join(' ')}
-    </div>
-    
-
-  `
+    ${pokemon.stats.map(stat => `
+      <div class="stat">
+        <div class="base-stat">${stat.base_stat}</div>
+        <div class="stat-name">${stat.stat.name}</div> 
+      </div>`).join(' ')}
+  </div>`
   // create a container div for the template
   // and also activate the close button
   const div = document.createElement('div')
