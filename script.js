@@ -38,7 +38,7 @@ const createNavigation = (pokemonTypes) => {
       // make a button in the menu for this pokemon type
       const button = document.createElement('button')
       button.className = pokemonType.name
-      button.innerHTML = pokemonType.name
+      button.textContent = pokemonType.name
       // when the button is clicked, show pokemon listings for this type
       // use the ".active" CSS class to show / hide pokemon
       button.addEventListener('click', () => {
@@ -63,26 +63,26 @@ const createListings = (pokemonType) => {
   pokemonType.pokemon.forEach(item => {
     // get a sprite icon for each listing
     const iconURL = getListingIconURL(item.pokemon)
+    const popoverId = `${pokemonType.name}-${item.pokemon.name}`
     // make a div / template for each listing. 
     const div = document.createElement('div')
-    div.classList.add('listing')
-    div.id = item.pokemon.name
-    div.innerHTML = `
+    div.classList.add('listing') 
+    let template =  `
       <img src="${iconURL}" onError="this.src='pokeball.svg'"/> 
-      <button class="open">${item.pokemon.name}</button>
-      <div popover>
+      <button class="open" popovertarget="${popoverId}" >${item.pokemon.name}</button>
+      <div popover id="${popoverId}">
         <div class="profile">
           <p>Loading...</p>
         </div>
       </div>`
-    const popover = div.querySelector(`div[popover]`)
-    div.querySelector(`button.open`)
-      .addEventListener('click', async () => {
-        popover.togglePopover()
-        const div = await createProfile(item.pokemon.url)
-        popover.querySelector(`.profile`).replaceWith(div)
-      })
-    section.appendChild(div)
+    div.innerHTML =  DOMPurify.sanitize(template)  
+    div.querySelector(`#${popoverId}`)
+    .addEventListener('toggle', async (event) => {    
+      if (event.newState == 'open') {    
+        event.target.innerHTML =  await createProfile(popoverId, item.pokemon.url)   
+      }
+    }) 
+    section.appendChild(div) 
   })
   main.appendChild(section)
 }
@@ -91,62 +91,50 @@ const createListings = (pokemonType) => {
 // and build a profile for the pokemon. 
 // this includes a template populated with details 
 // it also includes a close button.
-const createProfile = async (url) => {
+const createProfile = async (popoverId,url) => {
   const data = await fetch(url)
-  const pokemon = await data.json()
-  console.log('Pokemon Details', pokemon)
+  const pokemon = await data.json() 
   const imageURL = getProfileImageURL(pokemon)
   // build a template to hold details for this pokemon 
-  const template = `
-  
-  
-    <button class="close">Close</button>
-  <div class="details"> 
-  
-    <img src="${imageURL}" onError="this.src='pokeball.svg'"/>
-    <div class="characteristics"> 
-      <h2>${pokemon.name}</h2>
-      <h3>
-        <img src="pokeball.svg" style="width:16px;">
-        ${pokemon.types.map(t => `<span>${t.type.name}</span>`).join('<i> / </i>')}
-      </h3>
-
-      <fieldset>
-        <label>Height</label>
-        <meter value="${pokemon.height / 10}" min="0" max="10"></meter>
-        <label>${pokemon.height / 10}m</label>
-      </fieldset>
-
-      <fieldset>
-        <label>Weight</label>
-        <meter value="${pokemon.weight / 10}" min="0" max="500"></meter>
-        <label>${pokemon.weight / 10}kg</label> 
-      </fieldset>
-
-      <p>Abilities: ${pokemon.abilities.map(a => a.ability.name).join(', ')}</p> 
-    </div>
+  const template = ` 
+  <div class="profile">
+    <button class="close" popovertarget="${popoverId}"  >Close</button>
+    <div class="details"> 
     
+      <img src="${imageURL}" onError="this.src='pokeball.svg'"/>
+      <div class="characteristics"> 
+        <h2>${pokemon.name}</h2>
+        <h3>
+          <img src="pokeball.svg" style="width:16px;">
+          ${pokemon.types.map(t => `<span>${t.type.name}</span>`).join('<i> / </i>')}
+        </h3>
 
+        <fieldset>
+          <label>Height</label>
+          <meter value="${pokemon.height / 10}" min="0" max="10"></meter>
+          <label>${pokemon.height / 10}m</label>
+        </fieldset>
 
-  </div> 
-  <div class="stats">
-    ${pokemon.stats.map(stat => `
-      <div class="stat">
-        <div class="base-stat">${stat.base_stat}</div>
-        <div class="stat-name">${stat.stat.name}</div> 
-      </div>`).join(' ')}
-  </div>`
-  // create a container div for the template
-  // and also activate the close button
-  const div = document.createElement('div')
-  div.classList.add('profile')
-  div.innerHTML = template
-  div.querySelector(`button.close`)
-    .addEventListener('click', async () => {
-      document.querySelector(`#${pokemon.name} [popover]`).togglePopover()
-    })
-  // return the div to be inserted into the popover
-  return div
+        <fieldset>
+          <label>Weight</label>
+          <meter value="${pokemon.weight / 10}" min="0" max="100"></meter>
+          <label>${pokemon.weight / 10}kg</label> 
+        </fieldset>
+
+        <p>Abilities: ${pokemon.abilities.map(a => a.ability.name).join(', ')}</p> 
+      </div>
+       
+    </div> 
+    <div class="stats">
+      ${pokemon.stats.map(stat => `
+        <div class="stat">
+          <div class="base-stat">${stat.base_stat}</div>
+          <div class="stat-name">${stat.stat.name}</div> 
+        </div>`).join(' ')}
+    </div>
+  </div>` 
+
+  return  DOMPurify.sanitize(template) 
 }
 
 
