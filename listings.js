@@ -33,8 +33,7 @@ const createListings = (pokemonTypes) => {
           // the template includes a button to open the popover
           // as well as a placeholder for the popover itself.
           let template =
-            `
-            <button class="open" popoverTarget="${popoverId}" >
+            `<button class="open" popoverTarget="${popoverId}" >
               <img src="${iconURL}" onError="this.src='pokeball.svg'"/>
               <span>${item.pokemon.name}</span>
               <img class="open" src="open.svg" />

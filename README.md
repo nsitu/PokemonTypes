@@ -1,15 +1,14 @@
 # Pokemon Types 
 
 ## Context
-This demo illustrates how we can make multiple fetches on one page. We first fetch a list of pokemon types, followed by details for each. We then populate listings, such that each pokemon is connected to an individual fetch for details, which in turn are shown in a popover. This pattern may be referred to as a `pipeline`, since the output of one function becomes the input for the next. Data fetched from the [PokeAPI](https://pokeapi.co)
+This demo illustrates how we can make multiple fetches on one page. We first fetch a list of pokemon types, followed by details for each. We then populate the navigation and the listings using the fetched data. Finally, we connect each listing to an additional profile function that makes a further fetch for individual details. These details are shown in a popover and are loaded as needed. This example uses JavaScript modules, in order to keep the code organized. Data fetched from the [PokeAPI](https://pokeapi.co)
 
 ## Learning Prompts
 
 ### Promises in JavaScript
-When using fetch, we often have to wait for the network to respond. In JavaScript, we can use `Promises` to account for this waiting. Notably, the `fetch()` function returns a `Promise`. To handle this, one may use `async / await` syntax, but it's also possible to use `.then()` syntax to accomplish a similar goal. 
-- Can you compare these two ways of handling Promises in this Pokemon example? 
-- What are some of the pros and cons of each?
-- Can you work out how Promises are handled when there are multiple fetches happening at the same time?
+When using fetch, we often have to wait for the network to respond. In JavaScript, we can use `Promises` to account for this waiting. Notably, the `fetch()` function returns a `Promise`. To handle this, one may use `async / await` syntax. This is more modern, and works well when using modules. However you may also encounter an alternate `.then()` syntax to accomplish a similar goal. 
+- Can you work out how `await` is used in this demo, and why it is important?
+- Can you also work our how Promises are handled when there are multiple fetches happening at the same time?
 
 ### Templates within Templates
 If you have an array of elements nested inside an object, you may like to iterate over each one so that it has its own distinct treatment, within the larger context. 
