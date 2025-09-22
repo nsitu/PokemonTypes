@@ -33,8 +33,15 @@ h3 {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-
+  font-weight: normal;
   margin-top: 0px;
+}
+
+h3 span {
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  text-shadow: 0 1px #222;
 }
 
 nav {
@@ -69,6 +76,7 @@ button:hover {
 
 section {
   display: none;
+  padding: 1rem;
 }
 
 section.active {
@@ -81,11 +89,7 @@ section.active {
 /* ---- .listing ---- */
 
 .listing {
-  background: #ef5350;
-  color: white;
-  border-radius: 0.5rem;
-  padding: 10px 18px;
-  margin: 0.5rem;
+  padding: 1rem;
 }
 
 .listing>button {
@@ -229,23 +233,19 @@ button.close {
 
 
 /*Colours Via https://bulbapedia.bulbagarden.net/wiki/Type */
-.normal,
-.normal .listing {
+.normal {
   background: #A8A878
 }
 
-.fire,
-.fire .listing {
+.fire {
   background: #F08030
 }
 
-.fighting,
-.fighting .listing {
+.fighting {
   background: #C03028
 }
 
-.water,
-.water .listing {
+.water {
   background: #6890F0
 }
 

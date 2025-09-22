@@ -31,7 +31,7 @@ const createProfile = async (popoverId, url) => {
         <h2>${pokemon.name}</h2>
         <h3>
           <img src="pokeball.svg" style="width:16px;">
-          ${pokemon.types.map(t => `<span>${t.type.name}</span>`).join('<i> / </i>')}
+          ${pokemon.types.map(t => `<span class="${t.type.name}">${t.type.name}</span>`).join('<i> / </i>')}
         </h3>
 
         <fieldset>
