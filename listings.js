@@ -31,8 +31,12 @@ const createListings = (pokemonTypes) => {
           const div = document.createElement('div')
           div.classList.add('listing')
           let template =
-            `<img popovertarget="${popoverId}" src="${iconURL}" onError="this.src='pokeball.svg'"/> 
-            <button class="open" popovertarget="${popoverId}" >${item.pokemon.name}</button>
+            `
+            <button class="open" popoverTarget="${popoverId}" >
+              <img src="${iconURL}" onError="this.src='pokeball.svg'"/>
+              <span>${item.pokemon.name}</span>
+              <img class="open" src="open.svg" />
+            </button>
             <div popover id="${popoverId}">
               <div class="profile">
                 <p>Loading...</p>
