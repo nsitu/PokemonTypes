@@ -23,8 +23,8 @@ const createListings = (pokemonTypes) => {
           // Skip any pokemon with an ID > 10000 
           // NOTE: these IDs are alternate forms that often lack images
           if (id > 10000) return
-          // get a sprite icon from GitHub based on the ID 
-          const iconURL = `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/other/official-artwork/${id}.png`
+          // get a sprite icon directly from GitHub based on the ID  
+          const iconURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
           // assign a unique ID to the popover accounting for pokemon having multiple types
           const popoverId = `${pokemonType.name}-${id}`
           // make a div / template for each listing. 
