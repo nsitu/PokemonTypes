@@ -1,7 +1,8 @@
 import { createProfile } from './profile.js';
 
-// Let's create a listing of pokemon, for each type 
+// Let's create pokemon listings for each type 
 // We receive as input all types of Pokemon including a list of its members 
+// To understand the structure of the data, check the console log in the browser.
 const createListings = (pokemonTypes) => {
 
   // iterate over the list of pokemon types
@@ -9,7 +10,6 @@ const createListings = (pokemonTypes) => {
   pokemonTypes
     .filter(pokemonType => pokemonType.pokemon.length > 0)
     .forEach(pokemonType => {
-      console.log(pokemonType)
       // add a section to the page to hold pokemon of this type
       const section = document.createElement('section')
       section.classList.add(pokemonType.name)
@@ -30,6 +30,8 @@ const createListings = (pokemonTypes) => {
           // make a div / template for each listing. 
           const div = document.createElement('div')
           div.classList.add('listing')
+          // the template includes a button to open the popover
+          // as well as a placeholder for the popover itself.
           let template =
             `
             <button class="open" popoverTarget="${popoverId}" >
@@ -43,19 +45,21 @@ const createListings = (pokemonTypes) => {
               </div>
             </div>`
           div.innerHTML = DOMPurify.sanitize(template)
+          // when the popover is opened, fetch details and build a profile
+          // we only do this when opened to avoid excessive API calls 
           div.querySelector(`#${popoverId}`)
             .addEventListener('toggle', async (event) => {
               if (event.newState == 'open') {
                 event.target.innerHTML = await createProfile(popoverId, item.pokemon.url)
               }
             })
+          // add this listing to the section for this type
           section.appendChild(div)
 
         })
+      // add this section to the main part of the page
       document.querySelector('main').appendChild(section)
-
     })
-
 }
 
 
