@@ -6,6 +6,7 @@ html {
 
 body {
   font-family: 'TwentiethCenturyMedium', sans-serif;
+  margin: 0;
 }
 
 h1 {
@@ -44,23 +45,25 @@ nav {
   margin-bottom: 2rem;
 }
 
-
 button {
   padding: 10px 18px;
-  background: #EEE;
-  border: none;
   border-radius: 0.5rem;
-  background-image: linear-gradient(to bottom, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.2));
   color: #222;
   font-size: 16px;
-  text-shadow: 0 1px white;
+  text-shadow: 0 1px #fff;
   cursor: pointer;
+  border: 2px solid #fff;
+}
+
+
+nav button {
+  color: #fff;
+  font-size: 16px;
+  text-shadow: 0 1px #222;
 }
 
 button:hover {
-  background-color: #8CF;
-  text-shadow: 0 1px hsla(0, 0%, 100%, 0.5);
-  color: #222;
+  border: 2px solid #222;
 }
 
 
@@ -149,6 +152,10 @@ header {
 
 button.close {
   align-self: end;
+  position: relative;
+  z-index: 10;
+  /* ensure that the button is on top of the subsequent text */
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -196,74 +203,92 @@ button.close {
 
 
 /*Colours Via https://bulbapedia.bulbagarden.net/wiki/Type */
+.normal,
 .normal .listing {
   background: #A8A878
 }
 
+.fire,
 .fire .listing {
   background: #F08030
 }
 
+.fighting,
 .fighting .listing {
   background: #C03028
 }
 
+.water,
 .water .listing {
   background: #6890F0
 }
 
+.flying,
 .flying .listing {
   background: #a890f0
 }
 
+.grass,
 .grass .listing {
   background: #78c850
 }
 
+.poison,
 .poison .listing {
   background: #a040a0
 }
 
+.electric,
 .electric .listing {
   background: #f8d030
 }
 
+.ground,
 .ground .listing {
   background: #e0c068
 }
 
+.psychic,
 .psychic .listing {
   background: #f85888
 }
 
+.rock,
 .rock .listing {
   background: #b8a038
 }
 
+.ice,
 .ice .listing {
   background: #98d8d8
 }
 
+.bug,
 .bug .listing {
   background: #a8b820
 }
 
+.dragon,
 .dragon .listing {
   background: #7038f8
 }
 
+.ghost,
 .ghost .listing {
   background: #705898
 }
 
+.dark,
 .dark .listing {
   background: #705848
 }
 
+.steel,
 .steel .listing {
   background: #b8b8d0
 }
 
+.fairy,
 .fairy .listing {
   background: #ee99ac
 }
